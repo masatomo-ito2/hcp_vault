@@ -31,7 +31,7 @@ resource "vault_pki_secret_backend_root_cert" "root_cert" {
 
   depends_on = [ "vault_pki_secret_backend.pki" ]
 
-  backend = "${vault_pki_secret_backend.pki.path}"
+  backend = vault_pki_secret_backend.pki.path
 
   type = "internal"
   common_name = "Consul CA"
