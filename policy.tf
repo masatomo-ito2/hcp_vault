@@ -1,8 +1,8 @@
 resource "vault_policy" "admin" {
-	provider = vault.consul_mesh
-	name = "admin"
+  provider = vault.consul_mesh
+  name     = "admin"
 
-	policy = <<EOT
+  policy = <<EOT
 path "*"
 {
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]

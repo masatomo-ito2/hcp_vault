@@ -1,3 +1,3 @@
-variable ns_consul_mesh {
-	type = string
+variable "ns_consul_mesh" {
+  type = string
 }
