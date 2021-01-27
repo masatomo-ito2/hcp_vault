@@ -24,5 +24,25 @@ resource "vault_pki_secret_backend_role" "role" {
 
   allowed_domains  = ["consul", "internal"]
   allow_subdomains = true
-  max_ttl          = "32d"
 }
+
+resource "vault_pki_secret_backend_root_cert" "root_cert" {
+  provider = vault.consul_mesh
+
+  depends_on = [ "vault_pki_secret_backend.pki" ]
+
+  backend = "${vault_pki_secret_backend.pki.path}"
+
+  type = "internal"
+  common_name = "Consul CA"
+  ttl = "315360000"
+  format = "pem"
+  private_key_format = "der"
+  key_type = "rsa"
+  key_bits = 4096
+  exclude_cn_from_sans = true
+  ou = "My OU"
+  organization = "Masa consul mesh demo"
+}
+
+
