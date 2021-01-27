@@ -1,3 +1,3 @@
-resource "vault_auth_backend" "example" {
+resource "vault_auth_backend" "userpass" {
 	type = "userpass"
 }
